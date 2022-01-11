@@ -129,7 +129,13 @@ class Connection(object):   # pylint:disable=r0902,r0904
             self._cnopts.ciphers = ciphers
         # check that we have a hostkey to verify
         if self._cnopts.hostkeys is not None:
-            self._tconnect['hostkey'] = self._cnopts.get_hostkey(host)
+            host_to_find = host
+            default_ssh_port = socket.getservbyname('ssh') or 22
+
+            if port != default_ssh_port:
+              host_to_find = "[{}]:{}".format(host, port)
+
+            self._tconnect['hostkey'] = self._cnopts.get_hostkey(host_to_find)
 
         self._sftp_live = False
         self._sftp = None
