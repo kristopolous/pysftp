@@ -1,3 +1,9 @@
+
+The patch `is here <https://github.com/kristopolous/pysftp/commit/a3882bdbd59b6b5c06bde8f60a5c2af7847fa8e3>`_
+
+----
+
+
 pysftp
 ======
 
